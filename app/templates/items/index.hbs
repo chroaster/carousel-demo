@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row mt-3 justify-content-center">
+    <div class="col-md-11 col-lg-8 col-xl-7">
+      <h2>Bootstrap Carousel in Ember app</h2>
+      <p>Works fine on first load, but after clicking an image to go to a sub-route and then clicking "back", the carousel doesn't work (can't go left/right and no auto-cycling)</p>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-center">
+    <div class="col-md-11 col-lg-8 col-xl-7">
+      <div id="itemCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          {{#each model as |item|}}
+            <div class="carousel-item {{item.active}}">
+              {{#link-to "items.show" item class=item.id}}
+                <img class="d-block w-100 rounded" src={{item.img}} alt={{item.alt}}>
+              {{/link-to}}
+            </div>
+          {{/each}}
+        </div>
+        <a class="carousel-control-prev" href="#itemCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#itemCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-center">
+    <div class="col-md-11 col-lg-8 col-xl-7">
+      <h2>Items in store...</h2>
+      {{#each model as |item|}}
+        <li>{{item.title}}</li>
+      {{/each}}
+    </div>
+  </div>
+</div>
+{{outlet}}
